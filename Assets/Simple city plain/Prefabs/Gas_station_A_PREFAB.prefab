@@ -122,9 +122,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4888449184639514}
   - component: {fileID: -4587780555543261231}
+  - component: {fileID: -4423151221882918819}
   m_Layer: 0
   m_Name: Gas_station_A_PREFAB
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -156,4 +157,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab613504de1b5bb4bbe130b881f72d10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.5
+--- !u!65 &-4423151221882918819
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1505934643987248}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 16.44488, y: 7.5745645, z: 22.850761}
+  m_Center: {x: 6.5005403, y: 2.9005432, z: 7.928152}
