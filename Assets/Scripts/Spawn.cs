@@ -6,8 +6,8 @@ public class Spawn : MonoBehaviour
     public GameObject[] towns;
     private static int score = 0;
     private Rect forScore = new Rect(30, 3, 150, 20);
-    private Rect forWind = new Rect(Screen.width - 150, 3, 150, 20);
-    private Rect forDie = new Rect(Screen.width / 2 - 150, 150, 300, 100);
+    private Rect forWind = new Rect(Screen.width - 170, 3, 150, 20);
+    private Rect forDie = new Rect(Screen.width / 4, 150, 300, 100);
     private static bool play = true;
     private GUIStyle GUIStyle = new GUIStyle();
     private GUIStyle mainStyle = new GUIStyle();

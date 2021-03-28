@@ -7,26 +7,27 @@ public class Flyer : MonoBehaviour
     private float higth = 2;
     public GameObject bomb;
     private static bool play = true;
-
-    // Update is called once per frame
-    void Update()
-    {
-        if((Input.touchCount > 0 || Input.anyKey) && Time.time - lastTime >= 1 && play)
-        {
-            lastTime = Time.time;
-            Instantiate(bomb, new Vector3(-1.5f, (float)(transform.position.y - 0.1), -5), Quaternion.Euler(new Vector3(0, 0, 270)));
-        } else if(!play && (Input.touchCount > 1 || Input.anyKey))
-        {
-            lastTime = Time.time;
-            Movement.updateCount();
-            play = true;
-            move = true;
-            Spawn.die(false);
-        }
-    }
+    public AudioClip audioClip;
 
     private void FixedUpdate()
     {
+        if (Input.touchCount > 0 || Input.anyKey)
+        {
+            if (Time.time - lastTime >= 1 && play)
+            {
+                lastTime = Time.time;
+                Instantiate(bomb, new Vector3(-1.5f, (float)(transform.position.y - 0.1), -5), Quaternion.Euler(new Vector3(0, 0, 270)));
+                GetComponent<AudioSource>().PlayOneShot(audioClip);
+            }
+            else if (!play)
+            {
+                lastTime = Time.time;
+                Movement.updateCount();
+                play = true;
+                move = true;
+                Spawn.die(false);
+            }
+        }
         if (play)
         {
             if (!move && play)
