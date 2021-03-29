@@ -3,6 +3,7 @@ using UnityEngine;
 public class Flyer : MonoBehaviour
 {
     private float lastTime = 0;
+    private float timeOfDown;
     private bool move = false;
     private float higth = 2;
     public GameObject bomb;
@@ -13,19 +14,25 @@ public class Flyer : MonoBehaviour
     {
         if (Input.touchCount > 0 || Input.anyKey)
         {
-            if (Time.time - lastTime >= 1 && play)
+            if (!play)
+            {
+                if(Input.GetTouch(0).phase == TouchPhase.Began)
+                {
+                    timeOfDown = Time.time;
+                } 
+                else if (Input.GetTouch(0).phase == TouchPhase.Ended && Time.time - timeOfDown > 1)
+                {
+                    Movement.updateCount();
+                    play = true;
+                    move = true;
+                    Spawn.die(false);
+                }
+            }
+            else if (Time.time - lastTime >= 0.75)
             {
                 lastTime = Time.time;
                 Instantiate(bomb, new Vector3(-1.5f, (float)(transform.position.y - 0.1), -5), Quaternion.Euler(new Vector3(0, 0, 270)));
                 GetComponent<AudioSource>().PlayOneShot(audioClip);
-            }
-            else if (!play)
-            {
-                lastTime = Time.time;
-                Movement.updateCount();
-                play = true;
-                move = true;
-                Spawn.die(false);
             }
         }
         if (play)

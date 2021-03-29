@@ -7,7 +7,7 @@ public class Movement : MonoBehaviour
     void FixedUpdate()
     {
         int score = Spawn.getScore();
-        transform.Translate(Vector3.forward * speed * Time.deltaTime * (1 + (score < 300? (float)score / 300: Mathf.Log(score, 2) / 9)));
+        transform.Translate(Vector3.forward * speed * Time.deltaTime * (1 + (score < 300? (float)score / 300: Mathf.Log(score, 2) / 8)));
 
         if(transform.position.x < -10)
         {
